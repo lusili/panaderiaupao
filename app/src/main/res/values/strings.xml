@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">panaderia</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Iniciar sesión</string>
+    <string name="action_sign_in_short">Inicio de sesión</string>
+    <string name="error_invalid_email">Email invalido</string>
+    <string name="error_invalid_password">Password muy corto</string>
+    <string name="error_incorrect_password">Password incorrecto</string>
+    <string name="error_field_required">Campo requiredo</string>
+    <string name="permission_rationale">"Se requieren permisos a los contactos."
+    </string>
+    <string name="icon_button_catalogo">Catálogo</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">El buen pan</string>
+    <string name="nav_header_subtitle">elbuenpan@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>
