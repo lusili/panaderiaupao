@@ -12,11 +12,8 @@ import pe.upao.panaderia.db.CarritoDBHelper;
 import pe.upao.panaderia.db.tables.ProductTable;
 import pe.upao.panaderia.models.Product;
 
-/**
- * Created by on 23/09/18.
- */
-
 public class DAOSQLProduct {
+
     // https://pastebin.com/JFPqazvk
     private CarritoDBHelper dbHelper;
 
@@ -33,6 +30,7 @@ public class DAOSQLProduct {
         values.put(ProductTable.COLUMN_PHOTO_URL, product.getPhoto_url());
         values.put(ProductTable.COLUMN_QUANTITY, product.getQuantity());
         values.put(ProductTable.COLUMN_FEATURED, product.isFeatured());
+        values.put(ProductTable.COLUMN_PRICE, product.getPrice());
 
         if (product.getId() == -1) {
             db.insert(ProductTable.TABLE_NAME, null, values);
@@ -52,7 +50,9 @@ public class DAOSQLProduct {
                         ProductTable.COLUMN_NAME,
                         ProductTable.COLUMN_PHOTO_URL,
                         ProductTable.COLUMN_QUANTITY,
-                        ProductTable.COLUMN_FEATURED
+                        ProductTable.COLUMN_FEATURED,
+                        ProductTable.COLUMN_PRICE
+
                 },
                 null, null, null, null, null);
 
@@ -72,8 +72,9 @@ public class DAOSQLProduct {
         product.setId(cursor.getInt(cursor.getColumnIndex(ProductTable.COLUMN_ID)));
         product.setName(cursor.getString(cursor.getColumnIndex(ProductTable.COLUMN_NAME)));
         product.setPhoto_url(cursor.getString(cursor.getColumnIndex(ProductTable.COLUMN_PHOTO_URL)));
-        product.setQuantity(cursor.getString(cursor.getColumnIndex(ProductTable.COLUMN_QUANTITY)));
+        product.setQuantity(cursor.getInt(cursor.getColumnIndex(ProductTable.COLUMN_QUANTITY)));
         product.setFeatured(cursor.getInt(cursor.getColumnIndex(ProductTable.COLUMN_FEATURED)) == 1);
+        product.setPrice(cursor.getFloat(cursor.getColumnIndex(ProductTable.COLUMN_PRICE)));
         return product;
     }
 
@@ -94,7 +95,8 @@ public class DAOSQLProduct {
                         ProductTable.COLUMN_NAME,
                         ProductTable.COLUMN_PHOTO_URL,
                         ProductTable.COLUMN_QUANTITY,
-                        ProductTable.COLUMN_FEATURED},
+                        ProductTable.COLUMN_FEATURED,
+                        ProductTable.COLUMN_PRICE},
                 ProductTable.COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
 
         while (cursor.moveToNext()) {

@@ -29,6 +29,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements
     private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
+    private DeliverySharedPreferences prefs;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -38,6 +39,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        prefs = new DeliverySharedPreferences(this);
 
         // Views
         //mStatusTextView = findViewById(R.id.status);
@@ -112,7 +114,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            sendInit();
+                            sendInit(user.getEmail());
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -123,7 +125,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements
 
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
-                            mStatusTextView.setText(R.string.auth_failed);
+                           // mStatusTextView.setText(R.string.auth_failed);
                         }
                         // [END_EXCLUDE]
                     }
@@ -136,7 +138,8 @@ public class EmailPasswordActivity extends AppCompatActivity implements
         updateUI(null);
     }
 
-    private void sendInit(){
+    private void sendInit(String user){
+        prefs.putString(DeliverySharedPreferences.PREF_USUARIO, user);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

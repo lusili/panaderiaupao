@@ -1,25 +1,32 @@
 package pe.upao.panaderia.models;
 
-/**
- * Created by on 23/09/18.
- */
-
 public class Product {
     private int id;
     private String name;
     private String photo_url;
-    private String quantity;
+    private int quantity;
     private boolean featured;
+    private float price;
 
-    public Product() {
-    }
-
-    public Product(int id, String name, String photo_url, String quantity, boolean featured) {
+    public Product(int id, String name, String photo_url, int quantity, boolean featured) {
         this.id = id;
         this.name = name;
         this.photo_url = photo_url;
         this.quantity = quantity;
         this.featured = featured;
+    }
+
+    public Product(int id, String name, String photo_url, int quantity, boolean featured, float price) {
+        this.id = id;
+        this.name = name;
+        this.photo_url = photo_url;
+        this.quantity = quantity;
+        this.featured = featured;
+        this.price = price;
+    }
+
+    public Product() {
+
     }
 
     public int getId() {
@@ -46,11 +53,11 @@ public class Product {
         this.photo_url = photo_url;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -60,6 +67,14 @@ public class Product {
 
     public void setFeatured(boolean featured) {
         this.featured = featured;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     @Override

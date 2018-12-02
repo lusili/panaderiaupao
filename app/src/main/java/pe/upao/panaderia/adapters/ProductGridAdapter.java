@@ -15,14 +15,7 @@ import androidx.annotation.Nullable;
 import pe.upao.panaderia.R;
 import pe.upao.panaderia.models.Product;
 
-import static android.view.View.GONE;
-
-/**
- * Created by  on 23/09/18.
- */
-
-public class ProductGridAdapter extends ArrayAdapter{
-
+public class ProductGridAdapter extends ArrayAdapter {
     public ProductGridAdapter(@NonNull Context context, List<Product> products) {
         super(context, R.layout.grid_product_item, R.id.txtProduct, products);
     }
@@ -36,18 +29,28 @@ public class ProductGridAdapter extends ArrayAdapter{
 
         TextView txtProduct = view.findViewById(R.id.txtProduct);
         TextView txtQuantity = view.findViewById(R.id.txtQuantity);
-        ImageView imgStar = view.findViewById(R.id.imgStar);
+        ImageView img = view.findViewById(R.id.imgStar);
 
         Product product = (Product) getItem(position);
 
-
         txtProduct.setText(product.getName());
-        txtQuantity.setText(product.getQuantity());
+        txtQuantity.setText(Integer.toString(product.getQuantity()));
+
+        Integer imageID = this.getContext().getResources().getIdentifier(product.getPhoto_url(), "drawable", this.getContext().getPackageName());
+        img.setImageResource(imageID);
+        /*
         if(product.isFeatured()) {
-            imgStar.setVisibility(View.VISIBLE);
+            img.setVisibility(View.VISIBLE);
         }else{
-            imgStar.setVisibility(GONE);
+            img.setVisibility(GONE);
         }
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });*/
         return view;
     }
+
 }

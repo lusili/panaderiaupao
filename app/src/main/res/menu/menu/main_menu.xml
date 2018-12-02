@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/opt_ver_carrito"
+        android:icon="@drawable/carrito2"
+        android:title="Ver Carrito"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/opt_limpiar_carrito"
+        android:title="Limpiar Carrito" />
+    <item
+        android:id="@+id/opt_mis_marcadores"
+        android:title="Mis marcadores" />
+    <item
+        android:id="@+id/opt_ver_perfil"
+        android:title="Ver Perfil" />
+    <item
+        android:id="@+id/opt_cerrar_sesion"
+        android:title="Cerrar Sesión" />
+</menu>
